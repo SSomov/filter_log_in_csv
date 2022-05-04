@@ -1,0 +1,12 @@
+SOAP:
+Response
+message
+contains
+an
+errorXIAdapter
+/HTTP/ADAPTER.HTTP_EXCEPTION
+HTTP
+500
+Internal
+Server
+Error
