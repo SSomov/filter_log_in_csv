@@ -34,7 +34,7 @@ with open(FD+PATTERN_FILE_IN, "r", newline='', encoding='utf-8') as File:
             # добавляем в 9 столбец строки
             row.append(match[1].lstrip('0'))
         else:
-            row.append()
+            row.append('')
         # ищем соотвествие PATTERN2, в частности номер в 4 символа
         match = re.search(PATTERN2, row[SEARCH_COL])
         if match is not None:
