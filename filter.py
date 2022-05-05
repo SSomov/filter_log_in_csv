@@ -27,17 +27,19 @@ with open(FD+PATTERN_FILE_IN, "r", newline='', encoding='utf-8') as File:
         for word in list_filter:
             if word in row[SEARCH_COL]:
                 tempstr.append(word)
-         # ищем соотвествие PATTERN1, в частности номер в 16 символов
+        # ищем соотвествие PATTERN1, в частности номер в 16 символов
         match = re.search(PATTERN1, row[SEARCH_COL])
         if match is not None:
             # если соотвествие есть получаем номер, удаляем лидирующие нули
             # добавляем в 9 столбец строки
             row.append(match[1].lstrip('0'))
-            match = re.search(PATTERN2, row[SEARCH_COL])
-            # ищем соотвествие PATTERN2, в частности номер в 4 символов
-            if match is not None:
-                row.append(match[1].lstrip('0'))
-                # print(row[10])
+        else:
+            row.append()
+        # ищем соотвествие PATTERN2, в частности номер в 4 символа
+        match = re.search(PATTERN2, row[SEARCH_COL])
+        if match is not None:
+            row.append(match[1].lstrip('0'))
+            # print(row[10])
         # перезаписываем строку с данными паттернами
         row[SEARCH_COL] = " ".join(tempstr)
     with open(FD+PATTERN_FILE_OUT, "w", encoding='utf-8') as output:
