@@ -20,9 +20,8 @@ with open(FD+'csv1.csv', "r", newline='', encoding='utf-8') as File:
     for row in data:
         tempstr = []
         for word in list_filter:
-            if word in row[7]:
+            if word in row[8]:
                 tempstr.append(word)
-        row[7] = " ".join(tempstr)
          # ищем соотвествие PATTERN1, в частности номер в 16 символов
         match = re.search(PATTERN1, row[8])
         if match is not None:
@@ -34,6 +33,8 @@ with open(FD+'csv1.csv', "r", newline='', encoding='utf-8') as File:
             if match is not None:
                 row.append(match[1].lstrip('0'))
                 # print(row[10])
+        # перезаписываем строку с данными паттернами
+        row[8] = " ".join(tempstr)
     with open(FD+'csv2.csv', "w", encoding='utf-8') as output:
         writer = csv.writer(output, delimiter=';', lineterminator='\n')
         for row in data:
