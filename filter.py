@@ -13,7 +13,7 @@ with open(FD+'list.txt', 'r') as f:
     list_filter = [line.strip() for line in f]
 
 print("list search:", list_filter)
-with open(FD+'csv1.csv', "r", newline='') as File:
+with open(FD+'csv1.csv', "r", newline='', encoding='utf-8') as File:
     reader = csv.reader((line.replace('\0','') for line in File),  delimiter=';')
     #reader = csv.reader(File, delimiter=';')
     data = list(reader)
@@ -34,7 +34,7 @@ with open(FD+'csv1.csv', "r", newline='') as File:
             if match is not None:
                 row.append(match[1].lstrip('0'))
                 # print(row[10])
-    with open(FD+'csv2.csv', "w") as output:
+    with open(FD+'csv2.csv', "w", encoding='utf-8') as output:
         writer = csv.writer(output, delimiter=';', lineterminator='\n')
         for row in data:
             writer.writerow(row)
